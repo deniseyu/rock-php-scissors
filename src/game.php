@@ -1,10 +1,10 @@
 <?php
 class Game {
   public function evaluates($choiceOne, $choiceTwo) {
-    if ($choiceOne->type == $choiceTwo->type) {
+    if (get_class($choiceOne) == get_class($choiceTwo)) {
       return "Draw";
     }
-    else if (in_array($choiceTwo->type, $choiceOne->beats, true)) {
+    else if (in_array(get_class($choiceTwo), $choiceOne->beats, true)) {
       return $choiceOne;
     }
     else {
@@ -13,23 +13,17 @@ class Game {
   }
 }
 class Rock {
-  public $type = "Rock";
   public $beats = array("Scissors", "Lizard");
 }
 class Paper {
-  public $type = "Paper";
   public $beats = array("Rock", "Spock");
 }
 class Scissors {
-  public $type = "Scissors";
   public $beats = array("Paper", "Lizard");
 }
 class Lizard {
-  public $type = "Lizard";
   public $beats = array("Spock", "Paper");
 }
 class Spock {
-  public $type = "Spock";
   public $beats = array("Rock", "Scissors");
 }
-?>

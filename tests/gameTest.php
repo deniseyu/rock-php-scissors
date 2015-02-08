@@ -19,14 +19,6 @@ class GameTest extends PHPUnit_Framework_TestCase
     $this->lizard = new Lizard();
     $this->spock = new Spock();
   }
-  public function testCheckType()
-  {
-    $this->assertEquals($this->rock->type, "Rock");
-    $this->assertEquals($this->paper->type, "Paper");
-    $this->assertEquals($this->scissors->type, "Scissors");
-    $this->assertEquals($this->lizard->type, "Lizard");
-    $this->assertEquals($this->spock->type, "Spock");
-  }
   public function testDraw()
   {
     $this->assertEquals($this->game->evaluates($this->paper, $this->paper), "Draw");
@@ -72,5 +64,3 @@ class GameTest extends PHPUnit_Framework_TestCase
     $this->assertEquals($this->game->evaluates($this->paper, $this->lizard), $this->lizard);
   }
 }
-
-?>
