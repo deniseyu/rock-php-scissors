@@ -4,7 +4,7 @@ class Game {
     if ($choiceOne->type == $choiceTwo->type) {
       return "Draw";
     }
-    else if ($choiceOne->beats == $choiceTwo->type) {
+    else if (in_array($choiceTwo->type, $choiceOne->beats, true)) {
       return $choiceOne;
     }
     else {
@@ -14,14 +14,22 @@ class Game {
 }
 class Rock {
   public $type = "Rock";
-  public $beats = "Scissors";
+  public $beats = array("Scissors", "Lizard");
 }
 class Paper {
   public $type = "Paper";
-  public $beats = "Rock";
+  public $beats = array("Rock", "Spock");
 }
 class Scissors {
   public $type = "Scissors";
-  public $beats = "Paper";
+  public $beats = array("Paper", "Lizard");
+}
+class Lizard {
+  public $type = "Lizard";
+  public $beats = array("Spock", "Paper");
+}
+class Spock {
+  public $type = "Spock";
+  public $beats = array("Rock", "Scissors");
 }
 ?>

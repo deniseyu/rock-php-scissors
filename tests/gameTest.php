@@ -7,6 +7,8 @@ class GameTest extends PHPUnit_Framework_TestCase
   protected $rock;
   protected $paper;
   protected $scissors;
+  protected $lizard;
+  protected $spock;
 
   protected function setUp()
   {
@@ -14,12 +16,16 @@ class GameTest extends PHPUnit_Framework_TestCase
     $this->rock = new Rock();
     $this->paper = new Paper();
     $this->scissors = new Scissors();
+    $this->lizard = new Lizard();
+    $this->spock = new Spock();
   }
   public function testCheckType()
   {
     $this->assertEquals($this->rock->type, "Rock");
     $this->assertEquals($this->paper->type, "Paper");
     $this->assertEquals($this->scissors->type, "Scissors");
+    $this->assertEquals($this->lizard->type, "Lizard");
+    $this->assertEquals($this->spock->type, "Spock");
   }
   public function testDraw()
   {
@@ -36,6 +42,34 @@ class GameTest extends PHPUnit_Framework_TestCase
   public function testScissorsBeatsPaper()
   {
     $this->assertEquals($this->game->evaluates($this->scissors, $this->paper), $this->scissors);
+  }
+  public function testSpockBeatsRock()
+  {
+    $this->assertEquals($this->game->evaluates($this->spock, $this->rock), $this->spock);
+  }
+  public function testPaperBeatsSpock()
+  {
+    $this->assertEquals($this->game->evaluates($this->paper, $this->spock), $this->paper);
+  }
+  public function testScissorsBeatsLizard()
+  {
+    $this->assertEquals($this->game->evaluates($this->scissors, $this->lizard), $this->scissors);
+  }
+  public function testRockBeatsLizard()
+  {
+    $this->assertEquals($this->game->evaluates($this->rock, $this->lizard), $this->rock);
+  }
+  public function testLizardBeatsSpock()
+  {
+    $this->assertEquals($this->game->evaluates($this->lizard, $this->spock), $this->lizard);
+  }
+  public function testSpockBeatsScissors()
+  {
+    $this->assertEquals($this->game->evaluates($this->spock, $this->scissors), $this->spock);
+  }
+  public function testLizardBeatsPaper()
+  {
+    $this->assertEquals($this->game->evaluates($this->paper, $this->lizard), $this->lizard);
   }
 }
 
